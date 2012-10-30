@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Oct  4 12:43:27 UTC 2011 - adrian@suse.de
+
+- use new qemu-*-binfmt handler to run commands with correct $0
+- fix build for Factory
+
+-------------------------------------------------------------------
+Mon Mar 21 07:02:52 UTC 2011 - adrian@suse.de
+
+- initial package for new cross build support for OBS. Done by 
+  James Perkins from LinuxFoundation
+
