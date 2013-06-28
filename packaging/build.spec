@@ -6,6 +6,7 @@ Version:        20120927
 Release:        0
 #!BuildIgnore:  build-mkbaselibs
 Source:         obs-build-%{version}.tar.gz
+Source1001: 	build.manifest
 BuildArch:      noarch
 # Manual requires to avoid hard require to bash-static
 AutoReqProv:    off
@@ -55,6 +56,7 @@ for generating delta rpm packages.
 
 %prep
 %setup -q -n obs-build-%version
+cp %{SOURCE1001} .
 
 %build
 
@@ -62,6 +64,7 @@ for generating delta rpm packages.
 make DESTDIR=$RPM_BUILD_ROOT install
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc README
 /usr/bin/build
@@ -72,12 +75,14 @@ make DESTDIR=$RPM_BUILD_ROOT install
 
 
 %files mkbaselibs
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %dir /usr/lib/build
 /usr/lib/build/mkbaselibs
 /usr/lib/build/baselibs*
 
 %files mkdrpms
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %dir /usr/lib/build
 /usr/lib/build/mkdrpms
