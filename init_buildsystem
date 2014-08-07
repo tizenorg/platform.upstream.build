@@ -1061,16 +1061,12 @@ test -x /usr/bin/rpmquery && RPMCHECKOPTS_HOST="--nodigest --nosignature"
 
 test -x $BUILD_ROOT/sbin/ldconfig && chroot $BUILD_ROOT /sbin/ldconfig 2>&1
 
-typeset -ri suse_version=$(chroot $BUILD_ROOT rpm --eval '%{?suse_version}' 2>/dev/null)
 typeset -i num cumulate=-1
 typeset -a CUMULATED_LIST=()
 typeset -a CUMULATED_PIDS=()
 typeset -a CUMULATED_HMD5=()
 
-DO_CUMULATE=
-if ((suse_version > 1220)) ; then
-    DO_CUMULATE=true
-fi
+DO_CUMULATE=true
 
 MAIN_LIST="$PACKAGES_TO_INSTALL $PACKAGES_TO_CBINSTALL"
 test -n "$DO_CUMULATE" && MAIN_LIST="$MAIN_LIST CUMULATED"
