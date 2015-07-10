@@ -166,6 +166,9 @@ enum okfail binfmt_register(char *datafile, char *regfile)
 		return FAIL;
 	}
 
+	// remove default binfmt
+	write_file_string(SYSFS_BINFMT_MISC "/status", "-1");
+
 	for (line = 1; fgets(buf, sizeof(buf), fp) != NULL; line++)
 	{
 		char tokens[BUFSIZ];
@@ -216,6 +219,7 @@ enum okfail binfmt_register(char *datafile, char *regfile)
 				" ignoring\n", datafile, line, f[interpreter]);
 			goto skip;
 		}
+
 
 		if (!write_file_string(regfile, buf)) {
 			fprintf(stderr, "%s: line %d: write failed."
