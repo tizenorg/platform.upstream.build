@@ -2328,6 +2328,7 @@ if test -n "$RPMS" -a "$DO_CHECKS" != "false" -a -x "$BUILD_ROOT/opt/testing/bin
     LINT_RPM_FILE_LIST=($(find $BUILD_ROOT/$TOPDIR/RPMS \
 	\( -name "*-debuginfo-*" -o -name "*-debugsource-*" \
 	-o -name "*-32bit-*" -o -name "*-64bit-*" \
+	-o -name "*-ccache-*" \
 	-o -name "*-x86-*" -o -name "*-ia32-*" \) -prune \
 	-o -type f -name '*.rpm' -print))
     SRPM_FILE_LIST=($(find $BUILD_ROOT/$TOPDIR/SRPMS -type f -name "*.rpm"))
