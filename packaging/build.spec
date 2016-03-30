@@ -59,6 +59,9 @@ for generating delta rpm packages.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
